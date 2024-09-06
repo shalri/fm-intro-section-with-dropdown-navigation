@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Epilogue } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const epilogue = Epilogue({ subsets: ["latin"], weight: ["500", "700"] });
 
 export const metadata: Metadata = {
-  title: "次に(tsugini) | FScode",
-  description: "A basic NextJS template for Frontend Mentor Challenges",
+  title: "Intro Section With Dropdown Navigation | FScode",
+  description:
+    "Solution to Intro Section With Dropdown Navigation challenge from Frontend Mentor",
 };
 
 export default function RootLayout({
@@ -16,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} flex min-h-screen flex-col antialiased scroll-smooth`}>
+      <body
+        className={`${epilogue.className} flex min-h-screen flex-col scroll-smooth antialiased`}
+      >
         {children}
       </body>
     </html>

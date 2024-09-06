@@ -1,17 +1,21 @@
+import Link from "next/link";
+import Image from "next/image";
+import Navigation from "./Navigation";
+
 export default function Header() {
   return (
-    <header className="mb-6 w-full bg-zinc-200 py-3">
-      <nav className="container mx-auto flex items-center justify-between p-3">
-        <h1 className="text-lg font-bold">次に (tsugini)</h1>
-        <h2>
-          <a
-            href="https://github.com/shalri/soko"
-            className="font-semibold text-zinc-700 hover:text-zinc-800"
-          >
-            tsugini &middot; repo
-          </a>
-        </h2>
-      </nav>
+    <header className="flex w-full items-center px-[18px] py-5" role="banner">
+      <Link href="/" aria-label="Homepage">
+        <div className="relative h-8 w-[84px]">
+          <Image
+            src="/images/logo.svg"
+            fill
+            className="object-contain"
+            alt="span logo"
+          />
+        </div>
+      </Link>
+      <Navigation />
     </header>
   );
 }
