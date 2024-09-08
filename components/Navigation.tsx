@@ -1,12 +1,12 @@
 "use client";
 
-import { useMobileNav } from "@/hooks/useMobileNavgation";
+import { useMobileNav } from "@/hooks/useMobileNavigation";
 import { useSmallScreen } from "@/hooks/useSmallScreen";
 import { authLinks, navigationLinks } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { useCallback, useState, useRef, useEffect } from "react";
+import { useCallback, useRef } from "react";
 
 export default function Navigation() {
   const isSmallScreen = useSmallScreen();
@@ -79,7 +79,7 @@ export default function Navigation() {
               initial={{ opacity: 0, x: "100%" }}
               animate={{ opacity: 1, x: 0, transition: { duration: 0.2 } }}
               exit={{ x: "100%" }}
-              className="fixed inset-y-0 right-0 z-20 w-[64%] overflow-y-auto bg-white p-4 shadow-lg"
+              className="fixed inset-y-0 right-0 z-20 w-[64%] max-w-sm overflow-y-auto bg-white p-4 shadow-lg"
             >
               {children}
             </motion.div>
