@@ -5,6 +5,7 @@ import { useSmallScreen } from "@/hooks/useSmallScreen";
 import { authLinks, navigationLinks } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -26,7 +27,7 @@ export default function Navigation() {
               initial={{ opacity: 0, x: "100%" }}
               animate={{ opacity: 1, x: 0, transition: { duration: 0.2 } }}
               exit={{ x: "100%", transition: { duration: 0.1 } }}
-              className="fixed inset-y-0 right-0 z-20 w-[64%] max-w-sm overflow-y-auto bg-red-500 px-6 pt-[74px] shadow-lg shadow-black/50"
+              className="fixed inset-y-0 right-0 z-20 w-[64%] max-w-sm overflow-y-auto bg-is-almost-white pl-6 pr-5 pt-[74px] shadow-lg shadow-black/50"
             >
               {children}
             </motion.div>
@@ -59,16 +60,38 @@ export default function Navigation() {
 
   const NavContent = () => (
     <>
-      <ul className="flex flex-col gap-y-[10px]" role="menu">
+      <ul
+        className="flex flex-col gap-y-[10px] text-is-medium-gray"
+        role="menu"
+      >
         {navigationLinks.map((link) => (
           <li className="group relative" key={link.label}>
             {link.subLinks?.length ? (
               <div
-                className="block cursor-pointer py-1"
+                className="cursor-pointer py-1"
                 onClick={(e) => toggleDropdown(e, link.label)}
                 role="menuitem"
               >
-                {link.label} {activeDropdown === link.label ? "v" : ">"}
+                {link.label}{" "}
+                {activeDropdown === link.label ? (
+                  <span className="relative ml-3 inline-block size-[0.65rem]">
+                    <Image
+                      src="/images/icon-arrow-up.svg"
+                      fill
+                      alt="close"
+                      className="object-contain object-bottom"
+                    />
+                  </span>
+                ) : (
+                  <span className="relative ml-3 inline-block size-[0.65rem]">
+                    <Image
+                      src="/images/icon-arrow-down.svg"
+                      fill
+                      alt="open"
+                      className="object-contain object-bottom"
+                    />
+                  </span>
+                )}
               </div>
             ) : (
               <Link
@@ -107,9 +130,15 @@ export default function Navigation() {
           </li>
         ))}
       </ul>
-      <ul className="mt-4 sm:mt-0 sm:flex">
+      <ul className="mt-5 flex flex-col gap-y-2 text-center text-sm text-is-medium-gray sm:mt-0">
         {authLinks.map((authLink) => (
-          <li className="" key={authLink.label}>
+          <li
+            className={cn(
+              authLink.label === "Register" &&
+              "rounded-[10px] border-2 border-is-medium-gray/80",
+            )}
+            key={authLink.label}
+          >
             <Link
               href={authLink.href}
               className="block py-2"
