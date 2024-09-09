@@ -4,7 +4,7 @@ export function useMobileNav(
   navRef: RefObject<HTMLDivElement>,
   isSmallScreen: boolean,
 ) {
-  const [isMobileNavActive, setIsMobileNavActive] = useState(false); // code the design state
+  const [isMobileNavActive, setIsMobileNavActive] = useState(false);
 
   const closeMobileNav = useCallback(() => {
     if (isSmallScreen) {
@@ -22,6 +22,7 @@ export function useMobileNav(
         setIsMobileNavActive(false);
       }
     };
+
     const updateBodyClass = () => {
       if (isMobileNavActive) {
         document.body.classList.add("no-scroll");
@@ -30,11 +31,14 @@ export function useMobileNav(
       }
     };
 
-    document.addEventListener("click", handleClickOutside);
+    if (isMobileNavActive) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
     updateBodyClass();
 
     return () => {
-      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
       document.body.classList.remove("no-scroll");
     };
   }, [isMobileNavActive, navRef]);

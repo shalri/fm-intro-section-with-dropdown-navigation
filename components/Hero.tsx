@@ -4,7 +4,7 @@ import Runner from "./Runner";
 
 export default function SandBox() {
   return (
-    <main className="flex flex-grow flex-col pb-16">
+    <main className="flex hidden flex-grow flex-col pb-16">
       <picture className="relative min-h-[288px] w-full">
         <source
           srcSet="/images/image-hero-mobile.png"
@@ -32,7 +32,7 @@ export default function SandBox() {
           Learn more
         </button>
       </section>
-      <Runner />
+      {/* <Runner /> */}
     </main>
   );
 }

@@ -43,7 +43,7 @@ export const navigationLinks = [
     ],
   },
   {
-    label: "Career",
+    label: "Careers",
     href: "#",
     subLinks: null,
   },
