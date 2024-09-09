@@ -27,19 +27,19 @@ export const navigationLinks = [
     label: "Features",
     href: "#",
     subLinks: [
-      { label: "Todo List", href: "#" },
-      { label: "Calendar", href: "#" },
-      { label: "Reminders", href: "#" },
-      { label: "Planning", href: "#" },
+      { label: "Todo List", href: "#", icon: "/images/icon-todo.svg" },
+      { label: "Calendar", href: "#", icon: "/images/icon-calendar.svg" },
+      { label: "Reminders", href: "#", icon: "/images/icon-reminders.svg" },
+      { label: "Planning", href: "#", icon: "images/icon-planning.svg" },
     ],
   },
   {
     label: "Company",
     href: "#",
     subLinks: [
-      { label: "History", href: "#" },
-      { label: "Our Team", href: "#" },
-      { label: "Blog", href: "#" },
+      { label: "History", href: "#", icon: null },
+      { label: "Our Team", href: "#", icon: null },
+      { label: "Blog", href: "#", icon: null },
     ],
   },
   {

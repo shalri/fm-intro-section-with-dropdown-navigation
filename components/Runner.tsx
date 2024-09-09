@@ -8,7 +8,7 @@ import { useState } from "react";
 export default function Runner() {
   const [isPlaying, setIsPlaying] = useState(true);
   return (
-    <footer className="mt-12">
+    <footer className="max-w-screen mt-12 overflow-hidden">
       <ul className="flex items-center justify-between gap-x-2 px-[18px]">
         <Ticker
           duration={20}

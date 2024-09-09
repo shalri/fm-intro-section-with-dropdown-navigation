@@ -61,7 +61,7 @@ export default function Navigation() {
   const NavContent = () => (
     <>
       <ul
-        className="flex flex-col gap-y-[10px] text-is-medium-gray"
+        className="flex flex-col gap-y-[10px] text-is-medium-gray sm:flex-row"
         role="menu"
       >
         {navigationLinks.map((link) => (
@@ -107,21 +107,31 @@ export default function Navigation() {
             {link.subLinks?.length ? (
               <ul
                 className={cn(
+                  "mt-4 flex flex-col gap-y-[2px]",
                   activeDropdown === link.label
-                    ? "ml-4 sm:absolute sm:ml-0 sm:hidden sm:group-hover:block"
+                    ? "ml-4 sm:absolute sm:ml-0"
                     : "hidden",
                 )}
                 role="menu"
               >
-                {link.subLinks.map((sublink) => (
-                  <li className="" key={sublink.label}>
+                {link.subLinks.map((subLink) => (
+                  <li key={subLink.label}>
                     <Link
-                      href={sublink.href}
+                      href={subLink.href}
                       role="menuitem"
-                      className="block py-2"
+                      className="flex gap-x-2 py-2"
                       onClick={handleLinkClick}
                     >
-                      {sublink.label}
+                      {subLink.icon ? (
+                        // dynamically add the icon from data.js
+                        <div
+                          className="h-[20px] w-[34px] bg-contain bg-center bg-no-repeat"
+                          style={{ backgroundImage: `url(${subLink.icon})` }}
+                        />
+                      ) : (
+                        ""
+                      )}
+                      {subLink.label}
                     </Link>
                   </li>
                 ))}
