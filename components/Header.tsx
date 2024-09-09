@@ -4,9 +4,12 @@ import Navigation from "./Navigation";
 
 export default function Header() {
   return (
-    <header className="flex w-full items-center px-[18px] py-5" role="banner">
+    <header
+      className="mx-auto flex w-full max-w-[1394px] items-center px-[18px] py-5 sm:items-center sm:py-[20px]"
+      role="banner"
+    >
       <Link href="/" aria-label="Homepage">
-        <div className="relative h-8 w-[84px]">
+        <div className="relative h-[1.75rem] w-[84px]">
           <Image
             src="/images/logo.svg"
             fill

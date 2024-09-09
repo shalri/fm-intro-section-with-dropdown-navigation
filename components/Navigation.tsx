@@ -61,7 +61,7 @@ export default function Navigation() {
   const NavContent = () => (
     <>
       <ul
-        className="flex flex-col gap-y-[10px] text-is-medium-gray sm:flex-row"
+        className="flex flex-col gap-y-[10px] text-is-medium-gray sm:flex-row sm:items-center sm:gap-x-[38px] sm:pb-[5px] sm:pl-[62px] sm:text-[0.8825rem]"
         role="menu"
       >
         {navigationLinks.map((link) => (
@@ -74,7 +74,7 @@ export default function Navigation() {
               >
                 {link.label}{" "}
                 {activeDropdown === link.label ? (
-                  <span className="relative ml-3 inline-block size-[0.65rem]">
+                  <span className="relative ml-3 inline-block size-[0.65rem] sm:ml-1">
                     <Image
                       src="/images/icon-arrow-up.svg"
                       fill
@@ -83,7 +83,7 @@ export default function Navigation() {
                     />
                   </span>
                 ) : (
-                  <span className="relative ml-3 inline-block size-[0.65rem]">
+                  <span className="relative ml-3 inline-block size-[0.65rem] sm:ml-1">
                     <Image
                       src="/images/icon-arrow-down.svg"
                       fill
@@ -109,7 +109,7 @@ export default function Navigation() {
                 className={cn(
                   "mt-4 flex flex-col gap-y-[2px]",
                   activeDropdown === link.label
-                    ? "ml-4 sm:absolute sm:ml-0"
+                    ? "ml-4 sm:absolute sm:ml-0 sm:border sm:border-is-medium-gray"
                     : "hidden",
                 )}
                 role="menu"
@@ -140,18 +140,18 @@ export default function Navigation() {
           </li>
         ))}
       </ul>
-      <ul className="mt-5 flex flex-col gap-y-2 text-center text-sm text-is-medium-gray sm:mt-0">
+      <ul className="mt-5 flex flex-col gap-y-2 text-center text-sm text-is-medium-gray sm:mt-0 sm:w-full sm:max-w-[180px] sm:flex-row sm:items-baseline sm:justify-between sm:gap-x-4">
         {authLinks.map((authLink) => (
           <li
             className={cn(
               authLink.label === "Register" &&
-              "rounded-[10px] border-2 border-is-medium-gray/80",
+              "rounded-[12px] border-2 border-is-medium-gray/80 sm:mb-2 sm:border-[3px] sm:px-5 sm:leading-none",
             )}
             key={authLink.label}
           >
             <Link
               href={authLink.href}
-              className="block py-2"
+              className="block py-2 sm:py-3"
               onClick={handleLinkClick}
             >
               {authLink.label}
