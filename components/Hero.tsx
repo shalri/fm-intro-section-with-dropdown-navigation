@@ -7,15 +7,15 @@ export default function Hero() {
     <main className="grid pb-16 sm:mx-auto sm:mt-10 sm:max-w-[1185px] sm:grid-cols-2 sm:items-start">
       <picture className="relative min-h-[288px] w-full place-self-center sm:col-start-2 sm:ml-auto sm:flex sm:min-h-[638px] sm:w-[82%] lg:place-self-start">
         <source
-          srcSet="/images/image-hero-mobile.png"
+          srcSet="/fm-intro-section-with-dropdown-navigation/images/image-hero-mobile.png"
           media="(max-width: 640px)"
         />
         <source
-          srcSet="/images/image-hero-desktop.png"
+          srcSet="/fm-intro-section-with-dropdown-navigation/images/image-hero-desktop.png"
           media="(min-width: 641px)"
         />
         <Image
-          src="/images/image-hero-mobile.png"
+          src="/fm-intro-section-with-dropdown-navigation/images/image-hero-mobile.png"
           alt="hero image"
           fill
           className="object-contain"

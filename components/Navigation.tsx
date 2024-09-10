@@ -81,7 +81,7 @@ export default function Navigation() {
                 {activeDropdown === link.label ? (
                   <span className="relative ml-3 inline-block size-[0.65rem] sm:ml-1">
                     <Image
-                      src="/images/icon-arrow-up.svg"
+                      src="/fm-intro-section-with-dropdown-navigation/images/icon-arrow-up.svg"
                       fill
                       alt="close"
                       className="object-contain object-bottom"
@@ -90,7 +90,7 @@ export default function Navigation() {
                 ) : (
                   <span className="relative ml-3 inline-block size-[0.65rem] sm:ml-1">
                     <Image
-                      src="/images/icon-arrow-down.svg"
+                      src="/fm-intro-section-with-dropdown-navigation/images/icon-arrow-down.svg"
                       fill
                       alt="open"
                       className="object-contain object-bottom"
@@ -200,8 +200,8 @@ export default function Navigation() {
           aria-label={isMobileNavActive ? "Close Menu" : "Open Menu"}
           aria-expanded={isMobileNavActive}
           className={cn(
-            "pointer-events-auto z-50 ml-auto h-[30px] w-[28px] self-end bg-[url('/images/icon-menu.svg')] bg-no-repeat sm:hidden",
-            isMobileNavActive && "bg-[url('/images/icon-close-menu.svg')]",
+            "pointer-events-auto z-50 ml-auto h-[30px] w-[28px] self-end bg-[url('/fm-intro-section-with-dropdown-navigation/images/icon-menu.svg')] bg-no-repeat sm:hidden",
+            isMobileNavActive && "bg-[url('/fm-intro-section-with-dropdown-navigation/images/icon-close-menu.svg')]",
           )}
           onClick={toggleMobileNav}
         ></button>

@@ -11,7 +11,7 @@ export default function Header() {
       <Link href="/" aria-label="Homepage">
         <div className="relative h-[1.75rem] w-[84px]">
           <Image
-            src="/images/logo.svg"
+            src="/fm-intro-section-with-dropdown-navigation/images/logo.svg"
             fill
             className="object-contain"
             alt="span logo"
