@@ -2,10 +2,10 @@ import { heroCopy } from "@/lib/data";
 import Image from "next/image";
 import Runner from "./Runner";
 
-export default function SandBox() {
+export default function Hero() {
   return (
-    <main className="flex flex-grow flex-col pb-16 sm:mx-auto sm:mt-10 sm:grid sm:max-w-[1185px] sm:grid-cols-2 sm:items-start">
-      <picture className="relative min-h-[288px] w-full sm:col-start-2 sm:ml-auto sm:flex sm:min-h-[638px] sm:w-[82%] sm:place-self-start">
+    <main className="grid pb-16 sm:mx-auto sm:mt-10 sm:max-w-[1185px] sm:grid-cols-2 sm:items-start">
+      <picture className="relative min-h-[288px] w-full place-self-center sm:col-start-2 sm:ml-auto sm:flex sm:min-h-[638px] sm:w-[82%] lg:place-self-start">
         <source
           srcSet="/images/image-hero-mobile.png"
           media="(max-width: 640px)"

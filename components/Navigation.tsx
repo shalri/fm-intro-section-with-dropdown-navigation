@@ -48,6 +48,7 @@ export default function Navigation() {
     (e: React.MouseEvent) => {
       e.stopPropagation();
       closeMobileNav();
+      setActiveDropdown(null);
     },
     [closeMobileNav],
   );
@@ -107,10 +108,11 @@ export default function Navigation() {
             {link.subLinks?.length ? (
               <ul
                 className={cn(
-                  "mt-4 flex flex-col gap-y-[2px]",
+                  "mt-4 flex flex-col gap-y-[2px] text-nowrap rounded-lg sm:bg-white sm:px-6 sm:py-4 sm:shadow-xl sm:shadow-is-almost-black/30",
                   activeDropdown === link.label
-                    ? "ml-4 sm:absolute sm:ml-0 sm:border sm:border-is-medium-gray"
+                    ? "ml-4 sm:absolute sm:ml-0 sm:border"
                     : "hidden",
+                  link.label === "Features" && "-left-20",
                 )}
                 role="menu"
               >
@@ -119,7 +121,7 @@ export default function Navigation() {
                     <Link
                       href={subLink.href}
                       role="menuitem"
-                      className="flex gap-x-2 py-2"
+                      className="flex gap-x-2 py-2 sm:pl-0 sm:pr-2"
                       onClick={handleLinkClick}
                     >
                       {subLink.icon ? (
