@@ -18,12 +18,13 @@ export default function Navigation() {
     isSmallScreen,
   );
 
-  const animationWrapper = useCallback(
+  const mobileNavAnimationWrapper = useCallback(
     (children: React.ReactNode) => {
       return (
         <AnimatePresence>
           {isMobileNavActive && (
             <motion.div
+              key="mobile-nav"
               initial={{ opacity: 0, x: "100%" }}
               animate={{ opacity: 1, x: 0, transition: { duration: 0.2 } }}
               exit={{ x: "100%", transition: { duration: 0.1 } }}
@@ -59,19 +60,22 @@ export default function Navigation() {
     }
   }, [isMobileNavActive]);
 
+  // useOutsideClick(dropdownRef, () => setActiveDropdown(null));
+
   const NavContent = () => (
     <>
       <ul
         className="flex flex-col gap-y-[10px] text-is-medium-gray sm:flex-row sm:items-center sm:gap-x-[38px] sm:pb-[5px] sm:pl-[62px] sm:text-[0.8825rem]"
         role="menu"
       >
-        {navigationLinks.map((link) => (
-          <li className="group relative" key={link.label}>
+        {navigationLinks.map((link, index) => (
+          <li className="relative" key={`nav-link-${link.label}-${index}`}>
             {link.subLinks?.length ? (
               <div
-                className="cursor-pointer py-1"
+                className="transition-color cursor-pointer py-1 duration-300 hover:text-is-almost-black"
                 onClick={(e) => toggleDropdown(e, link.label)}
                 role="menuitem"
+                // ref={dropdownRef}
               >
                 {link.label}{" "}
                 {activeDropdown === link.label ? (
@@ -96,7 +100,7 @@ export default function Navigation() {
               </div>
             ) : (
               <Link
-                className="block py-1"
+                className="transition-color block py-1 duration-300 hover:text-is-almost-black"
                 role="menuitem"
                 href={link.href}
                 onClick={handleLinkClick}
@@ -104,31 +108,34 @@ export default function Navigation() {
                 {link.label}
               </Link>
             )}
-
-            {link.subLinks?.length ? (
-              <ul
+            {activeDropdown === link.label && link.subLinks?.length && (
+              <motion.ul
+                layout
+                key={`sublink-${link.label}-${index}`}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
                 className={cn(
-                  "mt-4 flex flex-col gap-y-[2px] text-nowrap rounded-lg sm:bg-white sm:px-6 sm:py-4 sm:shadow-xl sm:shadow-is-almost-black/30",
-                  activeDropdown === link.label
-                    ? "ml-4 sm:absolute sm:ml-0 sm:border"
-                    : "hidden",
-                  link.label === "Features" && "-left-20",
+                  "ml-4 mt-4 flex flex-col gap-y-[2px] text-nowrap rounded-lg sm:absolute sm:ml-0 sm:border sm:bg-white sm:px-6 sm:py-4 sm:shadow-xl sm:shadow-is-almost-black/30",
+                  link.label === "Features" && "sm:-left-20",
                 )}
                 role="menu"
               >
-                {link.subLinks.map((subLink) => (
-                  <li key={subLink.label}>
+                {link.subLinks.map((subLink, index) => (
+                  <li key={`${subLink.label}-${index}`}>
                     <Link
                       href={subLink.href}
                       role="menuitem"
-                      className="flex gap-x-2 py-2 sm:pl-0 sm:pr-2"
+                      className="flex gap-x-2 py-2 transition-all duration-300 hover:text-is-almost-black sm:pl-0 sm:pr-2"
                       onClick={handleLinkClick}
                     >
                       {subLink.icon ? (
                         // dynamically add the icon from data.js
                         <div
-                          className="h-[20px] w-[34px] bg-contain bg-center bg-no-repeat"
-                          style={{ backgroundImage: `url(${subLink.icon})` }}
+                          className="h-[20px] w-[34px] bg-contain bg-center bg-no-repeat hover:text-is-almost-black"
+                          style={{
+                            backgroundImage: `url(${subLink.icon})`,
+                          }}
                         />
                       ) : (
                         ""
@@ -137,8 +144,8 @@ export default function Navigation() {
                     </Link>
                   </li>
                 ))}
-              </ul>
-            ) : null}
+              </motion.ul>
+            )}
           </li>
         ))}
       </ul>
@@ -146,8 +153,9 @@ export default function Navigation() {
         {authLinks.map((authLink) => (
           <li
             className={cn(
+              "transition-colors duration-300 hover:text-is-almost-black",
               authLink.label === "Register" &&
-              "rounded-[12px] border-2 border-is-medium-gray/80 sm:mb-2 sm:border-[3px] sm:px-5 sm:leading-none",
+                "rounded-[12px] border-2 border-is-medium-gray/80 hover:border-is-almost-black sm:mb-2 sm:border-[3px] sm:px-5 sm:leading-none",
             )}
             key={authLink.label}
           >
@@ -182,7 +190,11 @@ export default function Navigation() {
         aria-label="Main Navigation"
         ref={navRef}
       >
-        {isSmallScreen ? animationWrapper(<NavContent />) : <NavContent />}
+        {isSmallScreen ? (
+          mobileNavAnimationWrapper(<NavContent />)
+        ) : (
+          <NavContent />
+        )}
         <button
           type="button"
           aria-label={isMobileNavActive ? "Close Menu" : "Open Menu"}

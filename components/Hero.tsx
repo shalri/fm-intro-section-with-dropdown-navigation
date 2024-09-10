@@ -28,7 +28,7 @@ export default function Hero() {
         <p className="mt-2 max-w-[450px] leading-[1.65] text-is-medium-gray sm:mt-[46px] sm:text-[18px] sm:leading-[1.585]">
           {heroCopy.body}
         </p>
-        <button className="mt-6 rounded-2xl bg-is-almost-black px-6 py-3 text-is-almost-white sm:mt-[50px] sm:px-[30px] sm:py-[15px] sm:text-[18px]">
+        <button className="mt-6 rounded-2xl border-2 bg-is-almost-black px-6 py-3 text-is-almost-white transition-all duration-300 hover:border-is-almost-black hover:bg-is-almost-white hover:text-is-almost-black sm:mt-[50px] sm:px-[30px] sm:py-[15px] sm:text-[18px]">
           Learn more
         </button>
         <Runner />
