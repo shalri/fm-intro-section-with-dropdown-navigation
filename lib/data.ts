@@ -6,19 +6,19 @@ export const heroCopy = {
 export const runnerLogos = [
   {
     company: "Databiz",
-    img: "/images/client-databiz.svg",
+    img: "images/client-databiz.svg",
   },
   {
     company: "Audiophile",
-    img: "/images/client-audiophile.svg",
+    img: "images/client-audiophile.svg",
   },
   {
     company: "Meet",
-    img: "/images/client-meet.svg",
+    img: "images/client-meet.svg",
   },
   {
     company: "Maker",
-    img: "/images/client-maker.svg",
+    img: "images/client-maker.svg",
   },
 ];
 
@@ -27,9 +27,9 @@ export const navigationLinks = [
     label: "Features",
     href: "#",
     subLinks: [
-      { label: "Todo List", href: "#", icon: "/images/icon-todo.svg" },
-      { label: "Calendar", href: "#", icon: "/images/icon-calendar.svg" },
-      { label: "Reminders", href: "#", icon: "/images/icon-reminders.svg" },
+      { label: "Todo List", href: "#", icon: "images/icon-todo.svg" },
+      { label: "Calendar", href: "#", icon: "images/icon-calendar.svg" },
+      { label: "Reminders", href: "#", icon: "images/icon-reminders.svg" },
       { label: "Planning", href: "#", icon: "images/icon-planning.svg" },
     ],
   },
