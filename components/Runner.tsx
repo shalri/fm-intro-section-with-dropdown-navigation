@@ -12,7 +12,7 @@ export default function Runner() {
       <ul className="flex items-center gap-x-8">
         <Ticker
           duration={20}
-          isPlaying={!isPlaying}
+          isPlaying={isPlaying}
           onMouseEnter={() => setIsPlaying(false)}
           onMouseLeave={() => setIsPlaying(true)}
         >
