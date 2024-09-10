@@ -9,7 +9,7 @@ export default function Runner() {
   const [isPlaying, setIsPlaying] = useState(true);
   return (
     <footer className="mt-12 w-full overflow-hidden sm:mt-[110px]">
-      <ul className="flex items-center gap-x-8">
+      <div className="flex items-center gap-x-8">
         <Ticker
           duration={20}
           isPlaying={isPlaying}
@@ -17,7 +17,7 @@ export default function Runner() {
           onMouseLeave={() => setIsPlaying(true)}
         >
           {runnerLogos.map((logo) => (
-            <li
+            <div
               className={cn(
                 "relative ml-8 h-[25px] sm:h-[28px]",
                 logo.company === "Databiz" && "w-[80px] sm:w-[112px]",
@@ -36,10 +36,10 @@ export default function Runner() {
                 fill
                 className="object-contain"
               />
-            </li>
+            </div>
           ))}
         </Ticker>
-      </ul>
+      </div>
     </footer>
   );
 }
